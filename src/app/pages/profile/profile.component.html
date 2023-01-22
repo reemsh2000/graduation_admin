@@ -1,0 +1,42 @@
+<div
+  class="profile-container"
+  *ngIf="!completeformprofile"
+  [class.aisdesmall]="asideService.getOpenAsideValue()"
+>
+  <div class="basic-info">
+    <h3 class="basic-word">Basic Info</h3>
+    <div class="btns">
+      <button class="profile-btn" (click)="save()">Save</button>
+    </div>
+  </div>
+  <div class="profile-inputs">
+    <from [formGroup]="profileForm">
+      <div class="admin-profile-table">
+        <div class="label-profile">
+          <label for class="label">Name</label>
+          <input type="text" class="info-input" formControlName="name" />
+        </div>
+        <div class="label-profile">
+          <label class="label">Postion Title</label>
+          <input type="text" class="info-input" formControlName="title" />
+        </div>
+        <div class="label-profile">
+          <label class="label">Email</label>
+          <input type="text" class="info-input" formControlName="email" />
+        </div>
+        <div class="label-profile">
+          <label class="label">Phone Number</label>
+          <input type="number" class="info-input" formControlName="phone" />
+        </div>
+        <div class="label-profile">
+          <label for="admin-profile-name" class="label">Nationality</label>
+          <input type="text" class="info-input" formControlName="nationality" />
+        </div>
+        <div class="label-profile">
+          <label for="admin-profile-name" class="label">Gender</label>
+          <input type="text" class="info-input" formControlName="gender" />
+        </div>
+      </div>
+    </from>
+  </div>
+</div>

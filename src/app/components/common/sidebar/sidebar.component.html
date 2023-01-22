@@ -1,0 +1,31 @@
+<aside [class.active]="isSideSmall">
+  <i
+    class="pi pi-times close"
+    (click)="closeSideBar()"
+    [class.active]="isSideSmall"
+  ></i>
+  <a
+    [routerLink]="row.route"
+    routerLinkActive="true"
+    *ngFor="let row of sideBarArray"
+    class="line_menu"
+    [class.active]="section.sectionName === row.label"
+  >
+    <div class="icon_line">
+      <i [ngClass]="[row.icon, 'row_icon']"></i>
+    </div>
+    <div class="title_line">
+      <span>{{ row.label }}</span>
+    </div>
+  </a>
+
+
+  <a routerLink="/login" routerLinkActive="true" class="line_menu">
+    <div class="icon_line">
+      <i [ngClass]="[logoutIcon, 'row_icon']"></i>
+    </div>
+    <div class="title_line">
+      <span>Logout</span>
+    </div>
+  </a>
+</aside>

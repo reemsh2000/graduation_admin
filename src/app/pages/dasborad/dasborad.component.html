@@ -1,0 +1,10 @@
+<div class="main_container" [class.active]="openMenu">
+  <div *ngIf="showErrorMsg">
+    <app-error-message [message]="ErrorMsg"></app-error-message>
+  </div>
+  <app-snapshot *ngIf="displayResult"></app-snapshot>
+
+  <div class="grid_charts" *ngIf="displayResult">
+
+  </div>
+</div>
