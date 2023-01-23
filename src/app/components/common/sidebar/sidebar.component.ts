@@ -18,24 +18,19 @@ export class SidebarComponent {
 	sideBarArray = [
 		{
 			icon: PrimeIcons.HOME,
-			label: "Dashboard",
-			route: "/dashboard",
+			label: "Exercises",
+			route: "dashboard/exercises",
 		},
-		// {
-		//   icon: PrimeIcons.USERS,
-		//   label: 'Teams',
-		//   route: '/dashboard/teams',
-		// },
-		// {
-		//   icon: PrimeIcons.REPLY,
-		//   label: 'Recommendations',
-		//   route: '/dashboard/recommendations',
-		// },
-		// {
-		//   icon: PrimeIcons.BOOK,
-		//   label: 'Reports',
-		//   route: 'dashboard/repots',
-		// },
+		{
+			icon: PrimeIcons.PLUS,
+			label: "Add Exercise ",
+			route: "/dashboard/add-exercise",
+		},
+		{
+			icon: PrimeIcons.USER_PLUS,
+			label: "Add Doctor ",
+			route: "/dashboard/add-doctor",
+		},
 		{
 			icon: PrimeIcons.USER,
 			label: "Profile",
