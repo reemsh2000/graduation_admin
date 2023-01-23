@@ -19,7 +19,7 @@ export class SidebarComponent {
 		{
 			icon: PrimeIcons.HOME,
 			label: "Exercises",
-			route: "dashboard/exercises",
+			route: "dashboard",
 		},
 		{
 			icon: PrimeIcons.PLUS,

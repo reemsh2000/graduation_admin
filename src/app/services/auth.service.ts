@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -35,17 +34,6 @@ export class AuthService {
 
   userId = '';
 
-  checkAuth() {
-    this.auth.onAuthStateChanged((user: any) => {
-      if (user) {
-        this.email.next(user.email);
-
-        this.userId = user.uid;
-        this.getUserName();
-      }
-    });
-  }
-
   register(form: any, Record: any) {
     this.auth['createUserWithEmailAndPassword'](form.email, form.password).then(
       (res: { user: any }) => {
@@ -54,64 +42,21 @@ export class AuthService {
           .collection('admin')
           .doc(res.user.uid)
           .set({ Record })
-          .then(() => {
-            this.firestore
-              .collection('profile-company')
-              .doc(res.user.uid)
-              .set({})
-              .then(() => {
-                this.firestore.collection('profile').doc(res.user.uid).set({});
-              });
-          })
+          // .then(() => {
+          //   this.firestore
+          //     .collection('profile-company')
+          //     .doc(res.user.uid)
+          //     .set({})
+          //     .then(() => {
+          //       this.firestore.collection('profile').doc(res.user.uid).set({});
+          //     });
+          // })
 
           .then(() => {
-            this.router.navigate(['/company']);
+            this.router.navigate(['/dashboard']);
           });
       }
     );
-  }
-
-  addProfileCompany(Record: any) {
-    this.firestore
-      .collection('profile-company')
-      .doc(this.userId)
-      .set({ ...Record, email: this.email.getValue() })
-      .then(() => {
-        this.completeform = true;
-        this.router.navigate(['/dashboard']);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  checkEmail(email: string) {
-    return this.firestore
-      .collection('profile', (ref) => ref.where('email', '==', email))
-      .get();
-  }
-
-  checkCompnayName(cName: string) {
-    return this.firestore
-      .collection('profile-company', (ref) =>
-        ref.where('companyName', '==', cName)
-      )
-      .get();
-  }
-  getAllCompanyData() {
-    return this.firestore.collection('profile-company').get();
-  }
-
-  addIntrestQuestions(Record: any) {
-    this.firestore
-      .collection('intersetQuestion')
-      .doc(this.userId)
-      .set(Record)
-      .then(() => {
-        this.router.navigate(['/login']);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
   }
   login(form: any) {
     this.auth['signInWithEmailAndPassword'](form.email, form.password)
@@ -156,11 +101,54 @@ export class AuthService {
       this.loginValue = false;
     });
   }
-  loginWithGoogle() {
-    this.auth.signInWithPopup(new GoogleAuthProvider()).then(() => {
-      this.router.navigate(['/dashboard']);
-    });
+  // **************************************************************************
+
+  addProfileCompany(Record: any) {
+    this.firestore
+      .collection('profile-company')
+      .doc(this.userId)
+      .set({ ...Record, email: this.email.getValue() })
+      .then(() => {
+        this.completeform = true;
+        this.router.navigate(['/dashboard']);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
+  checkEmail(email: string) {
+    return this.firestore
+      .collection('profile', (ref) => ref.where('email', '==', email))
+      .get();
+  }
+
+  checkCompnayName(cName: string) {
+    return this.firestore
+      .collection('profile-company', (ref) =>
+        ref.where('companyName', '==', cName)
+      )
+      .get();
+  }
+  getAllCompanyData() {
+    return this.firestore.collection('profile-company').get();
+  }
+
+  addIntrestQuestions(Record: any) {
+    this.firestore
+      .collection('intersetQuestion')
+      .doc(this.userId)
+      .set(Record)
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+
+
+
   addProfileInformation(Record: any) {
     this.firestore
       .collection('profile')
@@ -184,13 +172,4 @@ export class AuthService {
       });
   }
 
-  getUserName() {
-    return this.firestore
-      .collection('admin')
-      .doc(this.userId)
-      .get()
-      .subscribe((data) => {
-        this.username.next(data.data());
-      });
-  }
 }

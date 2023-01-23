@@ -26,7 +26,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ResetpasswordComponent } from './pages/Auth/resetpassword/resetpassword.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProfileComponent } from './pages/profile/profile.component';
 import { MatTableModule } from '@angular/material/table';
 import { ErrorMessageComponent } from './components/common/error-message/error-message.component';
 import {MessageService} from 'primeng/api';
@@ -44,7 +43,6 @@ import { AuthCommonPicComponent } from './components/common/auth-common-pic/auth
     NavComponent,
     DasboradComponent,
     ResetpasswordComponent,
-    ProfileComponent,
     ErrorMessageComponent,
     AuthCommonPicComponent,
   ],
@@ -66,7 +64,6 @@ import { AuthCommonPicComponent } from './components/common/auth-common-pic/auth
     MessagesModule,
     MessageModule,
     TableModule
-    // MessageService
   ],
   providers: [
     MessageService
