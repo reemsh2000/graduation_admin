@@ -1,4 +1,5 @@
 <div class="welcome-container">
+  <app-auth-common-pic class="auth_image"></app-auth-common-pic>
   <div class="join-container">
     <div class="nav-welcome">
       <div class="register">
@@ -7,10 +8,7 @@
       </div>
     </div>
     <div class="join">
-      <h1 class="login-title">Login Company Account!</h1>
-      <p class="login-description">
-        For the purpose of industry regulation, your details are required.
-      </p>
+      <h1 class="login-title">Login</h1>
     </div>
 
     <div class="login-form">
@@ -60,11 +58,7 @@
             Please, enter valid password address.
           </div>
         </div>
-        <button class="login-btn" (click)="login()">Login Account</button>
-        <span class="or-span">Or</span>
-        <button class="login-btn-google" (click)="loginWithGoogle()">
-          Login with Google Account
-        </button>
+        <button class="login-btn" (click)="login()">Login</button>
       </form>
       <div class="signUp-account">
         <span class="reset">forget password ? </span>

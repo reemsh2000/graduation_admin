@@ -6,7 +6,7 @@
   width: 75%;
   margin: 15px auto;
   box-shadow: 2px 2px #dddd;
-  height: 600px;
+  min-height: 500px;
 }
 .auth_image {
   width: 50%;
@@ -157,6 +157,6 @@ label {
     width: 100%;
     margin: auto;
     box-shadow: 2px 2px #dddd;
-    height: 600px;
+    /* height: 600px; */
   }
 }
