@@ -30,6 +30,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MatTableModule } from '@angular/material/table';
 import { ErrorMessageComponent } from './components/common/error-message/error-message.component';
 import {MessageService} from 'primeng/api';
+import { AuthCommonPicComponent } from './components/common/auth-common-pic/auth-common-pic.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {MessageService} from 'primeng/api';
     ResetpasswordComponent,
     ProfileComponent,
     ErrorMessageComponent,
+    AuthCommonPicComponent,
   ],
   imports: [
     MatTableModule,
