@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddExerciseComponent implements OnInit {
   completeformprofile: boolean;
-  profileForm = new FormGroup({
+  excersiseForm = new FormGroup({
     name: new FormControl(''),
     title: new FormControl(''),
     email: new FormControl(''),
@@ -33,7 +33,7 @@ export class AddExerciseComponent implements OnInit {
 
     this.authService.email$.subscribe((data) => {
       this.setEmail = data;
-      this.profileForm.setValue({
+      this.excersiseForm.setValue({
         email: this.setEmail,
         name: '',
         title: '',
@@ -45,7 +45,7 @@ export class AddExerciseComponent implements OnInit {
     this.authService.username$.subscribe((data) => {
       this.setName = data?.Record?.name;
 
-      this.profileForm.setValue({
+      this.excersiseForm.setValue({
         email: this.setEmail,
         name: this.setName,
         title: '',
@@ -55,7 +55,7 @@ export class AddExerciseComponent implements OnInit {
       });
     });
     this.authService.profileData$.subscribe((data) => {
-      this.profileForm.setValue({
+      this.excersiseForm.setValue({
         email: this.setEmail,
         name: this.setName,
         title: data?.title,
@@ -68,7 +68,7 @@ export class AddExerciseComponent implements OnInit {
 
   ngOnInit(): void {}
   save() {
-    this.authService.addProfileInformation(this.profileForm.value);
+    this.authService.addProfileInformation(this.excersiseForm.value);
     this.completeformprofile = !this.authService.completeform;
   }
   skip() {
