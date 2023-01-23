@@ -13,13 +13,11 @@ export class AddExerciseComponent implements OnInit {
   completeformprofile: boolean;
   excersiseForm = new FormGroup({
     name: new FormControl(''),
-    title: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
-    nationality: new FormControl(''),
-    gender: new FormControl(''),
+    videoUrl: new FormControl(''),
+    descriptions: new FormControl(''),
+    instructions: new FormControl(''),
+    restrictions: new FormControl(''),
   });
-  admin: any;
   setEmail: any;
   setName: any;
   setPhone: any;
@@ -70,9 +68,5 @@ export class AddExerciseComponent implements OnInit {
   save() {
     this.authService.addProfileInformation(this.excersiseForm.value);
     this.completeformprofile = !this.authService.completeform;
-  }
-  skip() {
-    console.log("mk")
-    this.router.navigate(['/dashboard/profile']);
   }
 }
