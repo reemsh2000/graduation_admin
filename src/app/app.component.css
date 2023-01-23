@@ -17,12 +17,12 @@
   background-color: #fff;
 }
 .auth{
-  margin-top: 50px;
+  margin-top: 10px;
 }
 @media screen and (max-width: 700px) {
   .content {
     width: 95%;
-    margin: 65px auto;
+    margin: 45px auto;
   }
   .bowl_aside {
     width: 75px;
