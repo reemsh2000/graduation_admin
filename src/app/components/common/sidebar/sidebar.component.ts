@@ -31,11 +31,6 @@ export class SidebarComponent {
 			label: "Add Doctor ",
 			route: "/dashboard/add-doctor",
 		},
-		{
-			icon: PrimeIcons.USER,
-			label: "Profile",
-			route: "/dashboard/profile",
-		},
 	];
 	closeSideBar() {
 		this.isMenuopen.emit(false);
