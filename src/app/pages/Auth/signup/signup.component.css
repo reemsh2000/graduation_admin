@@ -2,15 +2,11 @@
   display: flex;
   border: 1px solid #dddd;
   width: 75%;
-  margin: 15px auto;
+  margin: 15px auto 0px;
   box-shadow: 2px 2px #dddd;
-  /* height: 650px; */
-  margin-bottom: 70%;
 }
 .auth_image {
   width: 50%;
-  height: 650px;
-
 }
 
 .join-container {
