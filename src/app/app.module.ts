@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ErrorMessageComponent } from './components/common/error-message/error-message.component';
 import {MessageService} from 'primeng/api';
 import { AuthCommonPicComponent } from './components/common/auth-common-pic/auth-common-pic.component';
+import { AddExerciseComponent } from './pages/add-exercise/add-exercise.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AuthCommonPicComponent } from './components/common/auth-common-pic/auth
     ResetpasswordComponent,
     ErrorMessageComponent,
     AuthCommonPicComponent,
+    AddExerciseComponent
   ],
   imports: [
     MatTableModule,
