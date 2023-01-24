@@ -66,7 +66,7 @@ export class AddExerciseComponent implements OnInit {
 
   ngOnInit(): void {}
   save() {
-    this.authService.addProfileInformation(this.excersiseForm.value);
+    // this.authService.addProfileInformation(this.excersiseForm.value);
     this.completeformprofile = !this.authService.completeform;
   }
 }
