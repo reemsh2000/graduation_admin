@@ -3,6 +3,8 @@
   *ngIf="!completeformprofile"
   [class.aisdesmall]="asideService.getOpenAsideValue()"
 >
+<app-message [message]="msg"> </app-message>
+
   <div class="basic-info">
     <h3 class="basic-word">Add Excersise</h3>
     <div class="btns">
@@ -30,7 +32,7 @@
         </div>
         <div class="label-profile">
           <label for="admin-profile-name" class="label">Restrictions</label>
-          <input type="text" class="info-input" formControlName="Restrictions" />
+          <input type="text" class="info-input" formControlName="restrictions" />
         </div>
       </div>
     </from>

@@ -1,6 +1,6 @@
 <div class="main_container" [class.active]="openMenu">
   <div *ngIf="showErrorMsg">
-    <app-error-message [message]="ErrorMsg"></app-error-message>
+    <app-message [message]="ErrorMsg"></app-message>
   </div>
   <app-snapshot *ngIf="displayResult"></app-snapshot>
 
