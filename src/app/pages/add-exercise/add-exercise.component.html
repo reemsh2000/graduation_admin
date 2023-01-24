@@ -3,7 +3,7 @@
   *ngIf="!completeformprofile"
   [class.aisdesmall]="asideService.getOpenAsideValue()"
 >
-<app-message [message]="msg"> </app-message>
+<app-message [message]="msg$|async"> </app-message>
 
   <div class="basic-info">
     <h3 class="basic-word">Add Excersise</h3>
