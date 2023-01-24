@@ -16,7 +16,7 @@ export class AddExerciseComponent implements OnInit {
     videoUrl: new FormControl(''),
     descriptions: new FormControl(''),
     instructions: new FormControl(''),
-    restrictions: new FormControl(''),
+    restrictions: new FormControl([]),
   });
   setEmail: any;
   setName: any;
