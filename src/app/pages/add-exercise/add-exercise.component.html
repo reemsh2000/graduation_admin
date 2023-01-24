@@ -4,7 +4,7 @@
   [class.aisdesmall]="asideService.getOpenAsideValue()"
 >
   <div class="basic-info">
-    <h3 class="basic-word">Basic Info</h3>
+    <h3 class="basic-word">Add Excersise</h3>
     <div class="btns">
       <button class="profile-btn" (click)="save()">Save</button>
     </div>
@@ -17,24 +17,20 @@
           <input type="text" class="info-input" formControlName="name" />
         </div>
         <div class="label-profile">
-          <label class="label">Postion Title</label>
-          <input type="text" class="info-input" formControlName="title" />
+          <label class="label">Url video</label>
+          <input type="text" class="info-input" formControlName="urlVideo" />
         </div>
         <div class="label-profile">
-          <label class="label">Email</label>
-          <input type="text" class="info-input" formControlName="email" />
+          <label class="label">Description</label>
+          <input type="text" class="info-input" formControlName="description" />
         </div>
         <div class="label-profile">
-          <label class="label">Phone Number</label>
-          <input type="number" class="info-input" formControlName="phone" />
+          <label class="label">Instruction</label>
+          <input type="text" class="info-input" formControlName="instruction" />
         </div>
         <div class="label-profile">
-          <label for="admin-profile-name" class="label">Nationality</label>
-          <input type="text" class="info-input" formControlName="nationality" />
-        </div>
-        <div class="label-profile">
-          <label for="admin-profile-name" class="label">Gender</label>
-          <input type="text" class="info-input" formControlName="gender" />
+          <label for="admin-profile-name" class="label">Restrictions</label>
+          <input type="text" class="info-input" formControlName="Restrictions" />
         </div>
       </div>
     </from>
