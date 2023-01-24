@@ -19,14 +19,7 @@ export class AuthService {
   ) {}
   private errorMsg = new BehaviorSubject<string>('');
   public errorMsg$ = this.errorMsg.asObservable();
-  private email = new BehaviorSubject<any>('');
-  public email$ = this.email.asObservable();
-
-  private username = new BehaviorSubject<any>(null);
-  public username$ = this.username.asObservable();
-
-  private profileData = new BehaviorSubject<any>(null);
-  public profileData$ = this.profileData.asObservable();
+  public profileData = new BehaviorSubject<any>(null);
 
   public get getErrorMsg(): string {
     return this.errorMsg.getValue();
@@ -38,13 +31,11 @@ export class AuthService {
     console.log({auth:this.auth})
     this.auth['createUserWithEmailAndPassword'](form.email, form.password).then(
       (res: { user: any }) => {
-        console.log({res,Record})
         this.userId = res.user.uid;
-        console.log({id:res.user.uid})
         this.firestore
           .collection('admins')
           .doc(res.user.uid)
-          .set({ Record })
+          .set({name: Record.name })
           .then(() => {
             this.router.navigate(['/dashboard']);
           });
@@ -97,19 +88,19 @@ export class AuthService {
   }
   // **************************************************************************
 
-  addProfileCompany(Record: any) {
-    this.firestore
-      .collection('profile-company')
-      .doc(this.userId)
-      .set({ ...Record, email: this.email.getValue() })
-      .then(() => {
-        this.completeform = true;
-        this.router.navigate(['/dashboard']);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
+  // addProfileCompany(Record: any) {
+  //   this.firestore
+  //     .collection('profile-company')
+  //     .doc(this.userId)
+  //     .set({ ...Record, email: this.email.getValue() })
+  //     .then(() => {
+  //       this.completeform = true;
+  //       this.router.navigate(['/dashboard']);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
   checkEmail(email: string) {
     return this.firestore
       .collection('profile', (ref) => ref.where('email', '==', email))

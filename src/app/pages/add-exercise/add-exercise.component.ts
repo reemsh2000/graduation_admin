@@ -29,39 +29,39 @@ export class AddExerciseComponent implements OnInit {
     this.authService.getProfileData();
     this.asideService.setSection('Profile');
  
-    this.authService.email$.subscribe((data) => {
-      this.setEmail = data;
-      this.excersiseForm.setValue({
-        email: this.setEmail,
-        name: '',
-        title: '',
-        phone: '',
-        nationality: '',
-        gender: '',
-      });
-    });
-    this.authService.username$.subscribe((data) => {
-      this.setName = data?.Record?.name;
+    // this.authService.email$.subscribe((data) => {
+    //   this.setEmail = data;
+    //   this.excersiseForm.setValue({
+    //     email: this.setEmail,
+    //     name: '',
+    //     title: '',
+    //     phone: '',
+    //     nationality: '',
+    //     gender: '',
+    //   });
+    // });
+    // this.authService.username$.subscribe((data) => {
+    //   this.setName = data?.Record?.name;
 
-      this.excersiseForm.setValue({
-        email: this.setEmail,
-        name: this.setName,
-        title: '',
-        phone: '',
-        nationality: '',
-        gender: '',
-      });
-    });
-    this.authService.profileData$.subscribe((data) => {
-      this.excersiseForm.setValue({
-        email: this.setEmail,
-        name: this.setName,
-        title: data?.title,
-        phone: data?.phone,
-        nationality: data?.nationality,
-        gender: data?.gender,
-      });
-    });
+    //   this.excersiseForm.setValue({
+    //     email: this.setEmail,
+    //     name: this.setName,
+    //     title: '',
+    //     phone: '',
+    //     nationality: '',
+    //     gender: '',
+    //   });
+    // });
+    // this.authService.profileData$.subscribe((data) => {
+    //   this.excersiseForm.setValue({
+    //     email: this.setEmail,
+    //     name: this.setName,
+    //     title: data?.title,
+    //     phone: data?.phone,
+    //     nationality: data?.nationality,
+    //     gender: data?.gender,
+    //   });
+    // });
   }
 
   ngOnInit(): void {}
