@@ -35,23 +35,16 @@ export class AuthService {
   userId = '';
 
   register(form: any, Record: any) {
+    console.log({auth:this.auth})
     this.auth['createUserWithEmailAndPassword'](form.email, form.password).then(
       (res: { user: any }) => {
+        console.log({res,Record})
         this.userId = res.user.uid;
+        console.log({id:res.user.uid})
         this.firestore
-          .collection('admin')
+          .collection('admins')
           .doc(res.user.uid)
           .set({ Record })
-          // .then(() => {
-          //   this.firestore
-          //     .collection('profile-company')
-          //     .doc(res.user.uid)
-          //     .set({})
-          //     .then(() => {
-          //       this.firestore.collection('profile').doc(res.user.uid).set({});
-          //     });
-          // })
-
           .then(() => {
             this.router.navigate(['/dashboard']);
           });
@@ -66,6 +59,8 @@ export class AuthService {
       .catch((err) => {
         this.errorMsg.next('Invalid Email or Password');
       });
+      this.router.navigate(['/dashboard']);
+
   }
 
   ResetPassword(email: string) {
@@ -82,7 +77,6 @@ export class AuthService {
             summary: 'Success',
             severity: 'success',
           };
-          // this.router.navigate(['/login']);
         },
         (rejectionReason) => {
           msg = 'There is no user record corresponding to this identifier.';

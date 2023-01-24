@@ -18,7 +18,7 @@ export class AppComponent {
     private asideService: AsideService,
     private router: Router,
   ) {
-    this.auth.checkAuth();
+    // this.auth.checkAuth();
     this.router.events.subscribe((route) => {
       if (route instanceof NavigationEnd) {
         if (route.urlAfterRedirects.includes('dashboard')) {

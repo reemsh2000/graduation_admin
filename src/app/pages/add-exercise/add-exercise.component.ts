@@ -28,7 +28,7 @@ export class AddExerciseComponent implements OnInit {
   ) {
     this.authService.getProfileData();
     this.asideService.setSection('Profile');
-
+ 
     this.authService.email$.subscribe((data) => {
       this.setEmail = data;
       this.excersiseForm.setValue({

@@ -12,7 +12,6 @@ export const environment = {
     messagingSenderId: "426431154937",
     appId: "1:426431154937:web:984d51acb0a92edfc5f028"
   },
-  FounderEmail:"charlotte@nula.work",
 };
 /*
  * For easier debugging in development mode, you can import the following file
