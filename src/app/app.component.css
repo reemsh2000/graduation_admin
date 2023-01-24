@@ -2,6 +2,7 @@
   height: calc(100vh - 65px);
   margin-top: 65px;
   width: 100%;
+  background-color: var(--body);
 }
 
 .bowl_aside {
@@ -9,7 +10,7 @@
   height: 100%;
   transition: 0.3s ease-in-out;
   width: 17%;
-  background-color: #fff;
+  background-color: var(--body);
 }
 
 .bowl_aside.active {

@@ -1,7 +1,7 @@
 nav {
 	position: fixed;
 	height: 65px;
-	background-color: #fff;
+	background-color: var(--body);
 	left: 0;
 	top: 0;
 	width: 98%;
