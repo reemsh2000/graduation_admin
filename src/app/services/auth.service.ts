@@ -99,56 +99,5 @@ export class AuthService {
 				this.username.next(data.data());
 			});
 	}
-	// **************************************************************************
 
-	addProfileCompany(Record: any) {
-		this.firestore
-			.collection("profile-company")
-			.doc(this.userId)
-			.set({ ...Record, email: this.email.getValue() })
-			.then(() => {
-				this.completeform = true;
-				this.router.navigate(["/dashboard"]);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}
-	checkEmail(email: string) {
-		return this.firestore.collection("profile", (ref) => ref.where("email", "==", email)).get();
-	}
-
-	checkCompnayName(cName: string) {
-		return this.firestore.collection("profile-company", (ref) => ref.where("companyName", "==", cName)).get();
-	}
-	getAllCompanyData() {
-		return this.firestore.collection("profile-company").get();
-	}
-
-	addIntrestQuestions(Record: any) {
-		this.firestore
-			.collection("intersetQuestion")
-			.doc(this.userId)
-			.set(Record)
-			.then(() => {
-				this.router.navigate(["/login"]);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}
-
-	addProfileInformation(Record: any) {
-		this.firestore
-			.collection("profile")
-			.doc(this.userId)
-			.set(Record)
-			.then(() => {
-				this.completeform = true;
-				this.router.navigate(["/dashboard"]);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}
 }
