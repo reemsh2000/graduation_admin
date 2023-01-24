@@ -1,160 +1,154 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { Router } from "@angular/router";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: "root",
 })
 export class AuthService {
-  loginValue: boolean;
-  completeform: boolean;
-  adminInfo: any;
-  item: any;
-  constructor(
-    private auth: AngularFireAuth,
-    private router: Router,
-    public firestore: AngularFirestore
-  ) {}
-  private errorMsg = new BehaviorSubject<string>('');
-  public errorMsg$ = this.errorMsg.asObservable();
-  public profileData = new BehaviorSubject<any>(null);
+	loginValue: boolean;
+	completeform: boolean;
+	adminInfo: any;
+	item: any;
+	constructor(private auth: AngularFireAuth, private router: Router, public firestore: AngularFirestore) {}
+	private errorMsg = new BehaviorSubject<string>("");
+	public errorMsg$ = this.errorMsg.asObservable();
+	private email = new BehaviorSubject<any>("");
+	public email$ = this.email.asObservable();
 
-  public get getErrorMsg(): string {
-    return this.errorMsg.getValue();
-  }
+	private username = new BehaviorSubject<any>(null);
+	public username$ = this.username.asObservable();
 
-  userId = '';
+	private profileData = new BehaviorSubject<any>(null);
+	public profileData$ = this.profileData.asObservable();
 
-  register(form: any, Record: any) {
-    console.log({auth:this.auth})
-    this.auth['createUserWithEmailAndPassword'](form.email, form.password).then(
-      (res: { user: any }) => {
-        this.userId = res.user.uid;
-        this.firestore
-          .collection('admins')
-          .doc(res.user.uid)
-          .set({name: Record.name })
-          .then(() => {
-            this.router.navigate(['/dashboard']);
-          });
-      }
-    );
-  }
-  login(form: any) {
-    this.auth['signInWithEmailAndPassword'](form.email, form.password)
-      .then((res: { user: any }) => {
-        this.router.navigate(['/dashboard']);
-      })
-      .catch((err) => {
-        this.errorMsg.next('Invalid Email or Password');
-      });
-      this.router.navigate(['/dashboard']);
+	public get getErrorMsg(): string {
+		return this.errorMsg.getValue();
+	}
 
-  }
+	userId = "";
 
-  ResetPassword(email: string) {
-    let msg;
-    return this.auth
-      .sendPasswordResetEmail(email)
-      .then(
-        () => {
-          msg =
-            'A password reset link has been sent to your email address , check spam emails';
+	register(form: any, Record: any) {
+		this.auth["createUserWithEmailAndPassword"](form.email, form.password).then((res: { user: any }) => {
+			this.userId = res.user.uid;
+			this.firestore
+				.collection("admins")
+				.doc(res.user.uid)
+				.set({ name: Record.name })
+				.then(() => {
+					this.username.next(Record.name);
+					this.email.next(form.email);
+					this.router.navigate(["/dashboard"]);
+				});
+		});
+	}
+	login(form: any) {
+		this.auth["signInWithEmailAndPassword"](form.email, form.password)
+			.then((res: { user: any }) => {
+				this.userId = res.user.uid;
+				this.email.next(form.email);
+				this.getUserData();
+				this.router.navigate(["/dashboard"]);
+			})
+			.catch((err) => {
+				this.errorMsg.next("Invalid Email or Password");
+			});
+		this.router.navigate(["/dashboard"]);
+	}
 
-          return {
-            detail: msg,
-            summary: 'Success',
-            severity: 'success',
-          };
-        },
-        (rejectionReason) => {
-          msg = 'There is no user record corresponding to this identifier.';
-          return rejectionReason && { detail: msg, severity: 'error', summary: 'Error' };
-        }
-      )
-      .catch((e) => {
-        msg = 'An error occurred while attempting to reset your password';
-        return { detail: msg, severity: 'error', summary: 'Error' };
-      });
-  }
+	ResetPassword(email: string) {
+		let msg;
+		return this.auth
+			.sendPasswordResetEmail(email)
+			.then(
+				() => {
+					msg = "A password reset link has been sent to your email address , check spam emails";
 
-  logout() {
-    this.auth.signOut().then(() => {
-      this.router.navigate(['/login']);
-      this.loginValue = false;
-    });
-  }
-  // **************************************************************************
+					return {
+						detail: msg,
+						summary: "Success",
+						severity: "success",
+					};
+				},
+				(rejectionReason) => {
+					msg = "There is no user record corresponding to this identifier.";
+					return rejectionReason && { detail: msg, severity: "error", summary: "Error" };
+				}
+			)
+			.catch((e) => {
+				msg = "An error occurred while attempting to reset your password";
+				return { detail: msg, severity: "error", summary: "Error" };
+			});
+	}
 
-  // addProfileCompany(Record: any) {
-  //   this.firestore
-  //     .collection('profile-company')
-  //     .doc(this.userId)
-  //     .set({ ...Record, email: this.email.getValue() })
-  //     .then(() => {
-  //       this.completeform = true;
-  //       this.router.navigate(['/dashboard']);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
-  checkEmail(email: string) {
-    return this.firestore
-      .collection('profile', (ref) => ref.where('email', '==', email))
-      .get();
-  }
+	logout() {
+		this.auth.signOut().then(() => {
+			this.router.navigate(["/login"]);
+			this.loginValue = false;
+		});
+	}
 
-  checkCompnayName(cName: string) {
-    return this.firestore
-      .collection('profile-company', (ref) =>
-        ref.where('companyName', '==', cName)
-      )
-      .get();
-  }
-  getAllCompanyData() {
-    return this.firestore.collection('profile-company').get();
-  }
+	getUserData() {
+		return this.firestore
+			.collection("admins")
+			.doc(this.userId)
+			.get()
+			.subscribe((data) => {
+				this.username.next(data.data());
+			});
+	}
+	// **************************************************************************
 
-  addIntrestQuestions(Record: any) {
-    this.firestore
-      .collection('intersetQuestion')
-      .doc(this.userId)
-      .set(Record)
-      .then(() => {
-        this.router.navigate(['/login']);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
+	addProfileCompany(Record: any) {
+		this.firestore
+			.collection("profile-company")
+			.doc(this.userId)
+			.set({ ...Record, email: this.email.getValue() })
+			.then(() => {
+				this.completeform = true;
+				this.router.navigate(["/dashboard"]);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}
+	checkEmail(email: string) {
+		return this.firestore.collection("profile", (ref) => ref.where("email", "==", email)).get();
+	}
 
+	checkCompnayName(cName: string) {
+		return this.firestore.collection("profile-company", (ref) => ref.where("companyName", "==", cName)).get();
+	}
+	getAllCompanyData() {
+		return this.firestore.collection("profile-company").get();
+	}
 
+	addIntrestQuestions(Record: any) {
+		this.firestore
+			.collection("intersetQuestion")
+			.doc(this.userId)
+			.set(Record)
+			.then(() => {
+				this.router.navigate(["/login"]);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}
 
-
-  addProfileInformation(Record: any) {
-    this.firestore
-      .collection('profile')
-      .doc(this.userId)
-      .set(Record)
-      .then(() => {
-        this.completeform = true;
-        this.router.navigate(['/dashboard']);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  getProfileData() {
-    return this.firestore
-      .collection('profile')
-      .doc(this.userId)
-      .get()
-      .subscribe((data) => {
-        this.profileData.next(data.data());
-      });
-  }
-
+	addProfileInformation(Record: any) {
+		this.firestore
+			.collection("profile")
+			.doc(this.userId)
+			.set(Record)
+			.then(() => {
+				this.completeform = true;
+				this.router.navigate(["/dashboard"]);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}
 }

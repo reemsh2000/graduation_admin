@@ -26,7 +26,7 @@ export class AddExerciseComponent implements OnInit {
     private router: Router,
     public asideService: AsideService
   ) {
-    this.authService.getProfileData();
+    this.authService.getUserData();
     this.asideService.setSection('Profile');
  
     // this.authService.email$.subscribe((data) => {

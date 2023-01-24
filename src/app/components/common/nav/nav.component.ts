@@ -24,15 +24,13 @@ export class NavComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    // this.authService.email.subscribe((data) => {
-    //   console.log({data})
-    //   this.emailUser = data;
-    // });
+    this.authService.email$.subscribe((data) => {
+      this.emailUser = data;
+    });
 
-    // this.authService.username.subscribe((data) => {
-    //   console.log({hi:data})
-    //   this.userName = data?.Record?.name;
-    // });
+    this.authService.username$.subscribe((data) => {
+      this.userName = data?.Record?.name;
+    });
   }
 
   ngOnInit(): void {}
