@@ -3,8 +3,9 @@
   *ngIf="!completeformprofile"
   [class.aisdesmall]="asideService.getOpenAsideValue()"
 >
-<app-message [message]="msg$|async"> </app-message>
 
+<div class="error_div" *ngIf="showMsg">
+  <app-message [message]="msg$|async"> </app-message></div>
   <div class="basic-info">
     <h3 class="basic-word">Add Excersise</h3>
     <div class="btns">
@@ -25,10 +26,6 @@
         <div class="label-profile">
           <label class="label">Description</label>
           <input type="text" class="info-input" formControlName="description" />
-        </div>
-        <div class="label-profile">
-          <label class="label">Instruction</label>
-          <input type="text" class="info-input" formControlName="instruction" />
         </div>
         <div class="label-profile">
           <label for="admin-profile-name" class="label">Restrictions</label>
