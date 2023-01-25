@@ -19,7 +19,8 @@ export class AuthService implements OnInit {
     public firestore: AngularFirestore,
   ) {}
   async ngOnInit() {
-    await this.getAdmins()
+    await this.getAdmins();
+	await this.getUserData();
   }
   private errorMsg = new BehaviorSubject<string>('')
   public errorMsg$ = this.errorMsg.asObservable()

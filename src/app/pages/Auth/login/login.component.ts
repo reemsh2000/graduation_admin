@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
 	}
 	constructor(private authService: AuthService) {}
 
-	ngOnInit(): void {}
+	async ngOnInit() {
+  this.authService.getAdmins();
+  }
 	async login() {
 		if (this.profileForm.valid) {
 			await this.authService.login(this.profileForm.value);
