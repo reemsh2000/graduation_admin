@@ -57,7 +57,6 @@ export class AuthService implements OnInit {
   }
   async login(form: any) {
     try {
-      await this.getAdmins()
       const res = await this.auth['signInWithEmailAndPassword'](
         form.email,
         form.password,
@@ -68,7 +67,6 @@ export class AuthService implements OnInit {
       const checkIfAdmin = this.admins.find(
         (admin: string) => admin === form.email,
       )
-      console.log({ admins: this.admins })
       if (checkIfAdmin) {
         this.router.navigate(['/dashboard'])
       } else {
