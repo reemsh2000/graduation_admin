@@ -47,10 +47,10 @@ export class DataService {
 		this.firestore.collection("excersise").doc(id).delete();
 	}
 
-	addDoctorEmail(doctorEmail: string, doctorName: string) {
+	addDoctorEmail(form: any) {
 		this.firestore
 			.collection("doctors")
-			.add({ doctorName, doctorEmail })
+			.add({ doctorName: form.doctorName, doctorEmail: form.doctorEmail })
 			.then(() => {
 				const msg = "Doctor added successfully";
 

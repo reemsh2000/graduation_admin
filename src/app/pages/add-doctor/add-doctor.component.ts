@@ -13,7 +13,7 @@ export class AddDoctorComponent implements OnInit {
 
   completeformprofile: boolean
   showMsg: boolean = false
-  excersiseForm = new FormGroup({
+  doctorForm = new FormGroup({
     name: new FormControl('', Validators.required),
     doctoEmail: new FormControl('', Validators.required),
   })
@@ -28,10 +28,9 @@ export class AddDoctorComponent implements OnInit {
 
   ngOnInit(): void {}
   save() {
-    if (this.excersiseForm.valid) {
-      this.msg.next(this.dataService.addExcersise(this.excersiseForm.value))
-      console.log({ msg: this.msg.getValue() })
-      this.excersiseForm.reset()
+    if (this.doctorForm.valid) {
+      this.msg.next(this.dataService.addDoctorEmail(this.doctorForm.value))
+      this.doctorForm.reset()
     } else {
       this.msg.next({
         detail: 'You should fill the required fields',
