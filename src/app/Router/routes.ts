@@ -10,5 +10,6 @@ export const routingTable = [
   { path: 'resetpassword', component: ResetpasswordComponent },
   { path: 'dashboard', component: DasboradComponent },
   { path: 'dashboard/add-exercise', component: AddExerciseComponent },
+  { path: 'dashboard/edit-exercise', component: AddExerciseComponent },
   { path: 'dashboard/add-doctor', component: DasboradComponent },
 ];
