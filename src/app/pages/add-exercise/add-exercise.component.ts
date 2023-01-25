@@ -29,5 +29,6 @@ export class AddExerciseComponent implements OnInit {
 	save() {
 		this.msg.next(this.dataService.addExcersise(this.excersiseForm.value));
 		console.log({ msg: this.msg.getValue() });
+		this.excersiseForm.reset();
 	}
 }
