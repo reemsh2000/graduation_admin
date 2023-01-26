@@ -8,9 +8,6 @@
   <app-message [message]="msg$|async"> </app-message></div>
   <div class="basic-info">
     <h3 class="basic-word">Add Excersise</h3>
-    <div class="btns">
-      <button class="profile-btn" (click)="save()">Save</button>
-    </div>
   </div>
   <div class="profile-inputs">
     <from [formGroup]="excersiseForm">
@@ -33,5 +30,8 @@
         </div>
       </div>
     </from>
+    <div class="btns">
+      <button class="profile-btn" (click)="save()">Save</button>
+    </div>
   </div>
 </div>
