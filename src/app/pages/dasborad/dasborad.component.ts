@@ -12,7 +12,6 @@ export class DasboradComponent {
   title = 'nula';
   displayResult = false;
   showErrorMsg: boolean = false;
-  ErrorMsg= {severity:'error', summary:'Error', detail:'You should enter a valid type form'};
 
   constructor(
     private asideService: AsideService,

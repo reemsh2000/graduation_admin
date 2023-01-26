@@ -1,8 +1,6 @@
 <div class="main_container" [class.active]="openMenu">
   <div *ngIf="showErrorMsg">
-    <app-message [message]="ErrorMsg"></app-message>
   </div>
-  <app-snapshot *ngIf="displayResult"></app-snapshot>
 
   <div class="grid_charts" *ngIf="displayResult">
 
