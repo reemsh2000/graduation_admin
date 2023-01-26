@@ -31,15 +31,17 @@ export class AddExerciseComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  save() {
+  async save() {
     if (this.excersiseForm.valid) {
-      this.msg.next(this.dataService.addExcersise(this.excersiseForm.value))
-      console.log({ msg: this.msg.getValue() })
+      let message = await this.dataService.addExcersise(
+        this.excersiseForm.value,
+      )
+      this.msg.next(message)
       this.excersiseForm.reset()
     } else {
       this.msg.next({
         detail: 'You should fill the required fields',
-        summary: 'warn',
+        summary: 'Warn',
         severity: 'warn',
       })
     }
