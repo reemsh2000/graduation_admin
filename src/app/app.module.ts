@@ -32,6 +32,7 @@ import { MessageService } from "primeng/api";
 import { AuthCommonPicComponent } from "./components/common/auth-common-pic/auth-common-pic.component";
 import { AddExerciseComponent } from "./pages/add-exercise/add-exercise.component";
 import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
+import { EditExerciseComponent } from './pages/edit-exercise/edit-exercise.component';
 
 @NgModule({
 	declarations: [
@@ -47,6 +48,7 @@ import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
 		AuthCommonPicComponent,
 		AddExerciseComponent,
   AddDoctorComponent,
+  EditExerciseComponent,
 	],
 	imports: [
 		MatTableModule,
