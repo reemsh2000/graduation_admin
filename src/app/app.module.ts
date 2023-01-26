@@ -74,7 +74,4 @@ import { EditExerciseComponent } from './pages/edit-exercise/edit-exercise.compo
 	bootstrap: [AppComponent],
 })
 export class AppModule {
-	// constructor(library: FaIconLibrary){
-	//   library.addIconPacks(fas,far)
-	// }
 }
