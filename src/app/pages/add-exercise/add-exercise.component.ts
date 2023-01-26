@@ -30,7 +30,7 @@ export class AddExerciseComponent implements OnInit {
     urlVideo: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     restrictions: new FormControl([]),
-    bodyPart: new FormControl([], Validators.required),
+    // bodyPart: new FormControl([], Validators.required),
   })
   private msg = new BehaviorSubject<any>({})
   public msg$ = this.msg.asObservable()
