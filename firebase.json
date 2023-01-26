@@ -4,7 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist/graduation-admin",
+    "public": "dist/graduation_admin",
     "ignore": [
       "firebase.json",
       "**/.*",
