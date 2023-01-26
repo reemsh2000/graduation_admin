@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { AppRoutingModule } from "./Router/app-routing.module";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { environment } from "../environments/environment";
 import { MessagesModule } from "primeng/messages";
@@ -10,7 +9,6 @@ import { TableModule } from "primeng/table";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { routingTable } from "./Router/routes";
-import { ChartModule } from "primeng/chart";
 import { ChipsModule } from "primeng/chips";
 
 import { LoginComponent } from "./pages/Auth/login/login.component";
@@ -56,10 +54,8 @@ import { EditExerciseComponent } from './pages/edit-exercise/edit-exercise.compo
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
 		RouterModule.forRoot(routingTable),
-		ChartModule,
 		AngularFirestoreModule,
 		BrowserModule,
-		AppRoutingModule,
 		HttpClientModule,
 		CommonModule,
 		ProgressSpinnerModule,
