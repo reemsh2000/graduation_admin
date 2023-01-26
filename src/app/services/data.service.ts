@@ -39,7 +39,6 @@ export class DataService {
       .get()
       .subscribe((data: any) => {
         data.docs.map((ele: any) => excersises.push(ele.data().Record))
-        console.log({ exs: this.excersises.getValue() })
         this.excersises.next(excersises)
       })
   }
@@ -59,7 +58,6 @@ export class DataService {
     return this.firestore.collection('excersise').doc(id).update(excersise)
   }
   deleteExcersise(id: string) {
-    console.log({ id })
     return this.firestore.collection('excersise').doc(id).delete()
   }
 
