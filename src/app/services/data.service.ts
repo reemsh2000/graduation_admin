@@ -36,7 +36,7 @@ export class DataService {
       .collection('excersise')
       .get()
       .subscribe((data) => {
-        data.docs.map((ele: any) => excersises.push(ele.data().email))
+        data.docs.map((ele: any) => excersises.push(ele.data().Record))
         this.excersises.next(excersises)
       })
   }
