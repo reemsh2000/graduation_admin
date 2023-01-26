@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AsideService } from 'app/services/aside.service';
-import { DataService } from 'app/services/data.service';
-import { BehaviorSubject } from 'rxjs';
+import { Component, OnInit } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { AsideService } from 'app/services/aside.service'
+import { DataService } from 'app/services/data.service'
+import { BehaviorSubject } from 'rxjs'
 
 @Component({
   selector: 'app-add-doctor',
   templateUrl: './add-doctor.component.html',
-  styleUrls: ['./add-doctor.component.css']
+  styleUrls: ['./add-doctor.component.css'],
 })
 export class AddDoctorComponent implements OnInit {
-
   completeformprofile: boolean
   showMsg: boolean = false
   doctorForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    doctoEmail: new FormControl('', Validators.required),
+    doctorEmail: new FormControl('', Validators.required),
   })
   private msg = new BehaviorSubject<any>({})
   public msg$ = this.msg.asObservable()
@@ -27,18 +26,18 @@ export class AddDoctorComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  save() {
+  async save() {
     if (this.doctorForm.valid) {
-      this.msg.next(this.dataService.addDoctorEmail(this.doctorForm.value))
+      let message = await this.dataService.addDoctorEmail(this.doctorForm.value)
+      this.msg.next(message)
       this.doctorForm.reset()
     } else {
       this.msg.next({
         detail: 'You should fill the required fields',
-        summary: 'warn',
+        summary: 'Warn',
         severity: 'warn',
       })
     }
-    this.showMsg = true
+     this.showMsg = true
   }
-
 }
