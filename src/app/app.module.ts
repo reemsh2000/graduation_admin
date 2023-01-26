@@ -17,7 +17,6 @@ import { LoginComponent } from "./pages/Auth/login/login.component";
 import { SignupComponent } from "./pages/Auth/signup/signup.component";
 import { HttpClientModule } from "@angular/common/http";
 import { SidebarComponent } from "./components/common/sidebar/sidebar.component";
-import { SnapshotComponent } from "./components/common/snapshot/snapshot.component";
 import { NavComponent } from "./components/common/nav/nav.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DasboradComponent } from "./pages/dasborad/dasborad.component";
@@ -40,8 +39,6 @@ import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
 		LoginComponent,
 		SignupComponent,
 		SidebarComponent,
-		SnapshotComponent,
-		SnapshotComponent,
 		SidebarComponent,
 		NavComponent,
 		DasboradComponent,
