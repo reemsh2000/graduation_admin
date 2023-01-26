@@ -1,8 +1,84 @@
 <div class="main_container" [class.active]="openMenu">
-  <div *ngIf="showErrorMsg">
-  </div>
-
-  <div class="grid_charts" *ngIf="displayResult">
-
-  </div>
+  <div *ngIf="showErrorMsg"></div>
+  <h5 class="title">Excersises</h5>
+  <p-table
+    #dt1
+    [value]="excersises"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    styleClass="p-datatable-customers p-datatable-gridlines"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['name', 'description', 'urlVideo', 'restrictions']"
+  >
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex">
+        <span class="p-input-icon-left p-ml-auto">
+          <input
+            pInputText
+            type="text"
+            (input)="filterGlobal($event)"
+            placeholder="Search keyword"
+          />
+          <i class="pi pi-search"></i>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          <div class="p-d-flex p-jc-between p-ai-center">
+            Name
+            <p-columnFilter
+              type="text"
+              field="name"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th>
+          <div class="p-d-flex p-jc-between p-ai-center">
+            Description
+          </div>
+        </th>
+        <th>
+          <div class="p-d-flex p-jc-between p-ai-center">
+            urlVideo
+          </div>
+        </th>
+        <th>
+          <div class="p-d-flex p-jc-between p-ai-center">
+            restrictions
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-excersise>
+      <tr>
+        <td>
+          {{ excersise.name }}
+        </td>
+        <td>
+          <span class="image-text">{{ excersise.description }}</span>
+        </td>
+        <td>
+          <a [href]="excersise.urlVideo">
+          <span class="image-text">{{ excersise.urlVideo }}</span>
+          </a>
+        </td>
+        <td>
+  
+          <span class="image-text">{{ excersise.restrictions }}</span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">No Excersises found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>

@@ -12,19 +12,34 @@ export class DasboradComponent implements OnInit {
 	title = "nula";
 	displayResult = false;
 	showErrorMsg: boolean = false;
-
+	loading: boolean = true;
+  excersises:any=[]
 	constructor(private asideService: AsideService, private dataService: DataService) {
 		this.asideService.openAside$.subscribe((val) => {
 			this.openMenu = val;
 		});
 		this.asideService.setSection("Dashboard");
-
 	}
 	async ngOnInit() {
-    
+		await this.getExcersises();
+	}
+	async getExcersises() {
 		await this.dataService.getExcersises();
-		this.dataService.excersises$.subscribe((e) => {
-			console.log({ e });
+		this.dataService.excersises$.subscribe((data) => {
+			this.excersises=data;
+		});
+    this.loading=false;
+	}
+	async filterGlobal(event: any) {
+		let searchedWord = event.target.value.toLowerCase();
+		if (!searchedWord) {
+			return await this.getExcersises();
+		}
+		this.excersises = this.excersises.filter((excersise: any) => {
+			return (
+				excersise.name.toLowerCase()?.includes(searchedWord) 
+				//|| excersise.country.name.toLowerCase().includes(searchedWord) 
+			);
 		});
 	}
 }

@@ -13,12 +13,24 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 export class AddExerciseComponent implements OnInit {
   completeformprofile: boolean
   showMsg: boolean = false
+  bodyPart = [
+    'back',
+    'cardio',
+    'chest',
+    'lower arms',
+    'lower legs',
+    'neck',
+    'shoulders',
+    'upper arms',
+    'upper legs',
+    'waist',
+  ]
   excersiseForm = new FormGroup({
     name: new FormControl('', Validators.required),
     urlVideo: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    instruction: new FormControl(''),
     restrictions: new FormControl([]),
+    bodyPart: new FormControl([], Validators.required),
   })
   private msg = new BehaviorSubject<any>({})
   public msg$ = this.msg.asObservable()
