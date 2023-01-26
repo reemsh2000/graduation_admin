@@ -18,8 +18,7 @@ export class DataService {
       .doc(excersise.id)
       .set({ Record: excersise })
       .then(() => {
-        const msg =
-          'A password reset link has been sent to your email address , check spam emails'
+        const msg = 'Excersise added successfully'
 
         return {
           detail: msg,
@@ -44,18 +43,14 @@ export class DataService {
   }
 
   getExcersise(exersiseId: string) {
-    return this.firestore
-      .collection('excersise')
-      .doc(exersiseId)
-      .get()
-      .subscribe((data: any) => {
-        console.log(data.data())
-        return data.data()
-      })
+    return this.firestore.collection('excersise').doc(exersiseId).get()
   }
 
   updateExcersise(id: string, excersise: any) {
-    return this.firestore.collection('excersise').doc(id).update(excersise)
+    return this.firestore
+      .collection('excersise')
+      .doc(id)
+      .update({ Record: { ...excersise, id } })
   }
   deleteExcersise(id: string) {
     return this.firestore.collection('excersise').doc(id).delete()

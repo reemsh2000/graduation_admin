@@ -1,1 +1,40 @@
-<p>edit-exercise works!</p>
+<div
+  class="profile-container"
+  [class.aisdesmall]="asideService.getOpenAsideValue()"
+>
+  <div class="error_div" *ngIf="showMsg">
+    <app-message [message]="msg$ | async"></app-message>
+  </div>
+  <div class="basic-info">
+    <h3 class="basic-word">Edit Excersise</h3>
+  </div>
+  <div class="profile-inputs">
+    <from [formGroup]="excersiseForm">
+      <div class="admin-profile-table">
+        <div class="label-profile">
+          <label for class="label">Name</label>
+          <input type="text" class="info-input" formControlName="name" />
+        </div>
+        <div class="label-profile">
+          <label class="label">Url video</label>
+          <input type="text" class="info-input" formControlName="urlVideo" />
+        </div>
+        <div class="label-profile">
+          <label class="label">Description</label>
+          <input type="text" class="info-input" formControlName="description" />
+        </div>
+        <div class="label-profile">
+          <label for="admin-profile-name" class="label">Restrictions</label>
+          <input
+            type="text"
+            class="info-input"
+            formControlName="restrictions"
+          />
+        </div>
+      </div>
+    </from>
+    <div class="btns">
+      <button class="profile-btn" (click)="edit()">Save</button>
+    </div>
+  </div>
+</div>
