@@ -1,3 +1,4 @@
+import { AsideService } from './../../../services/aside.service';
 import { DataService } from "app/services/data.service";
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { AuthService } from "app/services/auth.service";
@@ -20,7 +21,7 @@ export class NavComponent implements OnInit {
 	}
 	emailUser: any;
 	userName: any;
-	constructor(public store: LoaderService, private authService: AuthService, private dataService: DataService) {
+	constructor(public store: LoaderService, private authService: AuthService, public asideService:AsideService) {
 		this.authService.getUserData();
 		this.authService.email$.subscribe((data) => {
 			this.emailUser = data;

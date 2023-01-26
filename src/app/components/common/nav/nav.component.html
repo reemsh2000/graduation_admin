@@ -11,9 +11,11 @@
       <div class="logo">
         <img src="../../../../assets/images/logo.jpeg" alt="tec care logo" />
       </div>
-    </div>
-  </div>
 
+    </div>
+    {{asideService.sectionName$ | async}}
+  </div>
+  
   <div class="user_profile">
     <div class="user_image">
       <img src="../../../../assets/images/reem.jpeg" (click)="profile()" />
