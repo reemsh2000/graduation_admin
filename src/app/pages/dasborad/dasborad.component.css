@@ -1,3 +1,6 @@
+a{
+  color: inherit;
+}
 .main_page {
 	display: flex;
 	justify-content: space-evenly;
@@ -6,7 +9,7 @@
 .main_container {
 	width: 80%;
 	transition: 0.3s ease-in-out;
-	margin: 80px 100px 10px 16%;
+	margin: 80px 100px 10px 19%;
 	height: 100%;
 }
 

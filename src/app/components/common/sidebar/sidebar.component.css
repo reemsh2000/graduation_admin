@@ -5,6 +5,7 @@ aside {
   width: 100%;
   height: 100%;
   background-color: var(--body);
+  border-right: 2px solid #fff;
 }
 
 aside.active {
