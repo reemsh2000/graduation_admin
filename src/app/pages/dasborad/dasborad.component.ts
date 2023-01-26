@@ -13,7 +13,7 @@ export class DasboradComponent implements OnInit {
 	displayResult = false;
 	showErrorMsg: boolean = false;
 	loading: boolean = true;
-  excersises:any=[]
+	excersises: any = [];
 	constructor(private asideService: AsideService, private dataService: DataService) {
 		this.asideService.openAside$.subscribe((val) => {
 			this.openMenu = val;
@@ -26,9 +26,10 @@ export class DasboradComponent implements OnInit {
 	async getExcersises() {
 		await this.dataService.getExcersises();
 		this.dataService.excersises$.subscribe((data) => {
-			this.excersises=data;
+			this.excersises = data;
+			console.log({Exer:this.excersises})
 		});
-    this.loading=false;
+		this.loading = false;
 	}
 	async filterGlobal(event: any) {
 		let searchedWord = event.target.value.toLowerCase();
@@ -36,10 +37,14 @@ export class DasboradComponent implements OnInit {
 			return await this.getExcersises();
 		}
 		this.excersises = this.excersises.filter((excersise: any) => {
-			return (
-				excersise.name.toLowerCase()?.includes(searchedWord) 
-				//|| excersise.country.name.toLowerCase().includes(searchedWord) 
-			);
+			return excersise.name.toLowerCase()?.includes(searchedWord);
+			//|| excersise.country.name.toLowerCase().includes(searchedWord)
 		});
+	}
+
+	async delete(exersiseId: string) {
+		console.log({exersiseId})
+		await this.dataService.deleteExcersise(exersiseId);
+		await this.getExcersises()
 	}
 }
