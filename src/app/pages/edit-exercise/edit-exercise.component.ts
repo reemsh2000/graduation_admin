@@ -24,6 +24,7 @@ export class EditExerciseComponent implements OnInit {
 	});
 	constructor(private route: ActivatedRoute, public dataService: DataService, public asideService: AsideService) {
 		this.id = this.route.snapshot.paramMap.get("id") || "";
+		this.asideService.setSection("Edit Excersise")
 	}
 
 	ngOnInit() {
