@@ -1,11 +1,7 @@
-<div
-  class="profile-container"
-  *ngIf="!completeformprofile"
-  [class.aisdesmall]="asideService.getOpenAsideValue()"
->
-
-<div class="error_div" *ngIf="showMsg">
-  <app-message [message]="msg$|async"> </app-message></div>
+<div class="profile-container" *ngIf="!completeformprofile" [class.aisdesmall]="asideService.getOpenAsideValue()">
+  <div class="error_div" *ngIf="showMsg">
+    <app-message [message]="msg$ | async"></app-message>
+  </div>
   <div class="basic-info">
     <h3 class="basic-word">Add Excersise</h3>
   </div>
@@ -25,8 +21,13 @@
           <input type="text" class="info-input" formControlName="description" />
         </div>
         <div class="label-profile">
+          <label class="label">Muscle Name</label>
+          <p-dropdown class="info-drop" [options]="bodyPart" formControlName="muscleName"
+            optionLabel="name"></p-dropdown>
+        </div>
+        <div class="label-profile">
           <label for="admin-profile-name" class="label">Restrictions</label>
-          <input type="text" class="info-input" formControlName="restrictions" />
+          <p-chips formControlName="restrictions"class="info-chip"></p-chips>
         </div>
       </div>
     </from>
