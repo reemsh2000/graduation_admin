@@ -10,6 +10,7 @@ import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { routingTable } from "./Router/routes";
 import { ChipsModule } from "primeng/chips";
+import {DropdownModule} from 'primeng/dropdown';
 
 import { LoginComponent } from "./pages/Auth/login/login.component";
 import { SignupComponent } from "./pages/Auth/signup/signup.component";
@@ -65,6 +66,7 @@ import { EditExerciseComponent } from './pages/edit-exercise/edit-exercise.compo
 		MessageModule,
 		TableModule,
 		ChipsModule,
+		DropdownModule
 	],
 	providers: [MessageService],
 	bootstrap: [AppComponent],
