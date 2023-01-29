@@ -15,6 +15,11 @@ export class DasboradComponent implements OnInit {
   showErrorMsg: boolean = false
   loading: boolean = true
   excersises: any = []
+  msg = {
+    detail: 'Deleted excersise successfully',
+    summary: 'Success',
+    severity: 'success',
+  }
   constructor(
     private asideService: AsideService,
     private dataService: DataService,
@@ -49,6 +54,7 @@ export class DasboradComponent implements OnInit {
   async delete(exersiseId: string) {
     await this.dataService.deleteExcersise(exersiseId)
     await this.getExcersises()
+    this.showErrorMsg = true
   }
   navigate(id: string) {
     this.router.navigate([`dashboard/edit-exercise/${id.trim()}`])

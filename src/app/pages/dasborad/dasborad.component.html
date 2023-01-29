@@ -1,5 +1,7 @@
 <div class="main_container" [class.active]="openMenu">
-	<div *ngIf="showErrorMsg"></div>
+	<div *ngIf="showErrorMsg">
+		<app-message [message]="msg"></app-message>
+	</div>
 	<h5 class="title">Excersises</h5>
 	<p-table
 		#dt1
