@@ -2,10 +2,10 @@
 	<div *ngIf="showErrorMsg">
 		<app-message [message]="msg"></app-message>
 	</div>
-	<h5 class="title">Excersises</h5>
+	<h5 class="title">Exercises</h5>
 	<p-table
 		#dt1
-		[value]="excersises"
+		[value]="exercises"
 		dataKey="id"
 		[rows]="10"
 		[showCurrentPageReport]="true"
@@ -75,7 +75,7 @@
 		</ng-template>
 		<ng-template pTemplate="emptymessage">
 			<tr>
-				<td colspan="7">No Excersises found.</td>
+				<td colspan="7">No Exercises Found.</td>
 			</tr>
 		</ng-template>
 	</p-table>

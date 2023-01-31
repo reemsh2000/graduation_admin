@@ -7,18 +7,18 @@ import { BehaviorSubject } from 'rxjs'
   providedIn: 'root',
 })
 export class DataService {
-  private excersises = new BehaviorSubject<any>([])
-  public excersises$ = this.excersises.asObservable()
+  private exercises = new BehaviorSubject<any>([])
+  public exercises$ = this.exercises.asObservable()
 
   constructor(private router: Router, public firestore: AngularFirestore) {}
-  addExcersise(Record: any): any {
-    let excersise = { ...Record, id: this.firestore.createId() }
+  addExercise(Record: any): any {
+    let exercises = { ...Record, id: this.firestore.createId() }
     return this.firestore
-      .collection('excersise')
-      .doc(excersise.id)
-      .set({ Record: excersise })
+      .collection('exercises')
+      .doc(exercises.id)
+      .set({ Record: exercises })
       .then(() => {
-        const msg = 'Excersise added successfully'
+        const msg = 'exercises added successfully'
 
         return {
           detail: msg,
@@ -31,29 +31,29 @@ export class DataService {
       })
   }
 
-  getExcersises() {
-    let excersises: any = []
+  getExercises() {
+    let exercises: any = []
     return this.firestore
-      .collection('excersise')
+      .collection('exercises')
       .get()
       .subscribe((data: any) => {
-        data.docs.map((ele: any) => excersises.push(ele.data().Record))
-        this.excersises.next(excersises)
+        data.docs.map((ele: any) => exercises.push(ele.data().Record))
+        this.exercises.next(exercises)
       })
   }
 
-  getExcersise(exersiseId: string) {
-    return this.firestore.collection('excersise').doc(exersiseId).get()
+  getExercise(exersiseId: string) {
+    return this.firestore.collection('exercises').doc(exersiseId).get()
   }
 
-  updateExcersise(id: string, excersise: any) {
+  updateExercises(id: string, exercises: any) {
     return this.firestore
-      .collection('excersise')
+      .collection('exercises')
       .doc(id)
-      .update({ Record: { ...excersise, id } })
+      .update({ Record: { ...exercises, id } })
   }
-  deleteExcersise(id: string) {
-    return this.firestore.collection('excersise').doc(id).delete()
+  deleteExercises(id: string) {
+    return this.firestore.collection('exercises').doc(id).delete()
   }
 
   addDoctorEmail(form: any) {

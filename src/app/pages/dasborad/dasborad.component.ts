@@ -14,7 +14,7 @@ export class DasboradComponent implements OnInit {
   displayResult = false
   showErrorMsg: boolean = false
   loading: boolean = true
-  excersises: any = []
+  exercises: any = []
   msg = {
     detail: 'Deleted excersise successfully',
     summary: 'Success',
@@ -31,29 +31,29 @@ export class DasboradComponent implements OnInit {
     this.asideService.setSection('Dashboard')
   }
   async ngOnInit() {
-    await this.getExcersises()
+    await this.getexercises()
   }
-  async getExcersises() {
-    await this.dataService.getExcersises()
-    this.dataService.excersises$.subscribe((data) => {
-      this.excersises = data
+  async getexercises() {
+    await this.dataService.getExercises()
+    this.dataService.exercises$.subscribe((data) => {
+      this.exercises = data
     })
     this.loading = false
   }
   async filterGlobal(event: any) {
     let searchedWord = event.target.value.toLowerCase()
     if (!searchedWord) {
-      return await this.getExcersises()
+      return await this.getexercises()
     }
-    this.excersises = this.excersises.filter((excersise: any) => {
+    this.exercises = this.exercises.filter((excersise: any) => {
       return excersise.name.toLowerCase()?.includes(searchedWord)
       //|| excersise.country.name.toLowerCase().includes(searchedWord)
     })
   }
 
   async delete(exersiseId: string) {
-    await this.dataService.deleteExcersise(exersiseId)
-    await this.getExcersises()
+    await this.dataService.deleteExercises(exersiseId)
+    await this.getexercises()
     this.showErrorMsg = true
   }
   navigate(id: string) {

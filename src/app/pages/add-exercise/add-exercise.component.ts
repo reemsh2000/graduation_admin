@@ -25,7 +25,7 @@ export class AddExerciseComponent implements OnInit {
     { name: 'upper legs' },
     { name: 'waist' },
   ]
-  excersiseForm = new FormGroup({
+  exerciseForm = new FormGroup({
     name: new FormControl('', Validators.required),
     urlVideo: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
@@ -45,17 +45,17 @@ export class AddExerciseComponent implements OnInit {
 
   ngOnInit(): void {}
   async save() {
-    console.log({ form: this.excersiseForm.value })
+    console.log({ form: this.exerciseForm.value })
     const formData = {
-      ...this.excersiseForm.value,
-      muscleName: this.excersiseForm.value.muscleName.name,
+      ...this.exerciseForm.value,
+      muscleName: this.exerciseForm.value.muscleName.name,
     }
     console.log({ formData })
 
-    if (this.excersiseForm.valid) {
-      let message = await this.dataService.addExcersise(formData)
+    if (this.exerciseForm.valid) {
+      let message = await this.dataService.addExercise(formData)
       this.msg.next(message)
-      this.excersiseForm.reset()
+      this.exerciseForm.reset()
     } else {
       this.msg.next({
         detail: 'You should fill the required fields',
