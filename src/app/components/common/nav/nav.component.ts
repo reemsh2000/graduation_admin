@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
 		});
 
 		this.authService.username$.subscribe((data) => {
-			this.userName = data?.Record?.name;
+			this.userName = data?.name;
 		});
 	}
 
