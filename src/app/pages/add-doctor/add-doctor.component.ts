@@ -14,7 +14,7 @@ export class AddDoctorComponent implements OnInit {
   showMsg: boolean = false
   doctorForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    doctorEmail: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
   })
   private msg = new BehaviorSubject<any>({})
   public msg$ = this.msg.asObservable()
@@ -28,7 +28,7 @@ export class AddDoctorComponent implements OnInit {
   ngOnInit(): void {}
   async save() {
     if (this.doctorForm.valid) {
-      let message = await this.dataService.addDoctorEmail(this.doctorForm.value)
+      let message = await this.dataService.addNewDoctor(this.doctorForm.value)
       this.msg.next(message)
       this.doctorForm.reset()
     } else {
