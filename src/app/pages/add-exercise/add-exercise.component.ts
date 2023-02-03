@@ -14,6 +14,7 @@ export class AddExerciseComponent implements OnInit {
   completeformprofile: boolean
   showMsg: boolean = false
   bodyPart = [
+    { name: '' },
     { name: 'back' },
     { name: 'cardio' },
     { name: 'chest' },
