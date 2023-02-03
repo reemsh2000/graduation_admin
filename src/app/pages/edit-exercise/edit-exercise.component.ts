@@ -15,13 +15,25 @@ export class EditExerciseComponent implements OnInit {
 	showMsg: boolean = false;
 	private msg = new BehaviorSubject<any>({});
 	public msg$ = this.msg.asObservable();
-	exerciseForm = new FormGroup({
-		name: new FormControl("", Validators.required),
-		urlVideo: new FormControl("", Validators.required),
-		description: new FormControl("", Validators.required),
+	bodyPart = [
+		{ name: 'back' },
+		{ name: 'cardio' },
+		{ name: 'chest' },
+		{ name: 'lower arms' },
+		{ name: 'lower legs' },
+		{ name: 'neck' },
+		{ name: 'shoulders' },
+		{ name: 'upper arms' },
+		{ name: 'upper legs' },
+		{ name: 'waist' },
+	  ]
+	  exerciseForm = new FormGroup({
+		name: new FormControl('', Validators.required),
+		urlVideo: new FormControl('', Validators.required),
+		description: new FormControl('', Validators.required),
 		restrictions: new FormControl([]),
-		// bodyPart: new FormControl([], Validators.required),
-	});
+		muscleName: new FormControl('', Validators.required),
+	  })
 	constructor(private route: ActivatedRoute, public dataService: DataService, public asideService: AsideService) {
 		this.id = this.route.snapshot.paramMap.get("id") || "";
 		this.asideService.setSection("Edit exercises")
@@ -29,19 +41,23 @@ export class EditExerciseComponent implements OnInit {
 
 	ngOnInit() {
 		this.dataService.getExercise(this.id).subscribe((data: any) => {
-			let exersise = data.data().Record;
+			let exersise = data.data();
 			this.exerciseForm = new FormGroup({
 				name: new FormControl(exersise.name, Validators.required),
 				urlVideo: new FormControl(exersise.urlVideo, Validators.required),
 				description: new FormControl(exersise.description, Validators.required),
 				restrictions: new FormControl(exersise.restrictions),
-				// bodyPart: new FormControl([], Validators.required),
+				muscleName: new FormControl(exersise.muscleName),
 			});
 		});
 	}
 	edit() {
 		if (this.exerciseForm.valid) {
-			this.dataService.updateExercises(this.id, this.exerciseForm.value);
+			const formData = {
+				...this.exerciseForm.value,
+				muscleName: this.exerciseForm.value.muscleName.name,
+			  }
+			this.dataService.updateExercises(this.id,formData);
 			this.msg.next({
 				detail: "Exersise updated successfully",
 				summary: "Success",
