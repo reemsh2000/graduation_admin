@@ -15,28 +15,17 @@ export class EditExerciseComponent implements OnInit {
 	showMsg: boolean = false;
 	private msg = new BehaviorSubject<any>({});
 	public msg$ = this.msg.asObservable();
-	bodyPart = [
-		{ name: 'back' },
-		{ name: 'cardio' },
-		{ name: 'chest' },
-		{ name: 'lower arms' },
-		{ name: 'lower legs' },
-		{ name: 'neck' },
-		{ name: 'shoulders' },
-		{ name: 'upper arms' },
-		{ name: 'upper legs' },
-		{ name: 'waist' },
-	  ]
-	  exerciseForm = new FormGroup({
-		name: new FormControl('', Validators.required),
-		urlVideo: new FormControl('', Validators.required),
-		description: new FormControl('', Validators.required),
+	bodyPart = [{ name: "back" }, { name: "cardio" }, { name: "chest" }, { name: "lower arms" }, { name: "lower legs" }, { name: "neck" }, { name: "shoulders" }, { name: "upper arms" }, { name: "upper legs" }, { name: "waist" }];
+	exerciseForm = new FormGroup({
+		name: new FormControl("", Validators.required),
+		urlVideo: new FormControl("", Validators.required),
+		description: new FormControl("", Validators.required),
 		restrictions: new FormControl([]),
-		muscleName: new FormControl('', Validators.required),
-	  })
+		muscleName: new FormControl("", Validators.required),
+	});
 	constructor(private route: ActivatedRoute, public dataService: DataService, public asideService: AsideService) {
 		this.id = this.route.snapshot.paramMap.get("id") || "";
-		this.asideService.setSection("Edit exercises")
+		this.asideService.setSection("Edit exercises");
 	}
 
 	ngOnInit() {
@@ -47,7 +36,7 @@ export class EditExerciseComponent implements OnInit {
 				urlVideo: new FormControl(exersise.urlVideo, Validators.required),
 				description: new FormControl(exersise.description, Validators.required),
 				restrictions: new FormControl(exersise.restrictions),
-				muscleName: new FormControl(exersise.muscleName),
+				muscleName: new FormControl({ name: exersise.muscleName }),
 			});
 		});
 	}
@@ -56,8 +45,8 @@ export class EditExerciseComponent implements OnInit {
 			const formData = {
 				...this.exerciseForm.value,
 				muscleName: this.exerciseForm.value.muscleName.name,
-			  }
-			this.dataService.updateExercises(this.id,formData);
+			};
+			this.dataService.updateExercises(this.id, formData);
 			this.msg.next({
 				detail: "Exersise updated successfully",
 				summary: "Success",
