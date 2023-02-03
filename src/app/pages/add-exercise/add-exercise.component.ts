@@ -45,12 +45,10 @@ export class AddExerciseComponent implements OnInit {
 
   ngOnInit(): void {}
   async save() {
-    console.log({ form: this.exerciseForm.value })
     const formData = {
       ...this.exerciseForm.value,
       muscleName: this.exerciseForm.value.muscleName.name,
     }
-    console.log({ formData })
 
     if (this.exerciseForm.valid) {
       let message = await this.dataService.addExercise(formData)
