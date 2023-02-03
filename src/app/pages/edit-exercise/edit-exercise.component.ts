@@ -21,7 +21,6 @@ export class EditExerciseComponent implements OnInit {
 		urlVideo: new FormControl("", Validators.required),
 		description: new FormControl("", Validators.required),
 		urlImage:new FormControl('', Validators.required),
-		restrictions: new FormControl([]),
 		muscleName: new FormControl("", Validators.required),
 	});
 	constructor(private route: ActivatedRoute, public dataService: DataService, public asideService: AsideService) {
@@ -36,7 +35,6 @@ export class EditExerciseComponent implements OnInit {
 				name: new FormControl(exersise.name, Validators.required),
 				urlVideo: new FormControl(exersise.urlVideo, Validators.required),
 				description: new FormControl(exersise.description, Validators.required),
-				restrictions: new FormControl(exersise.restrictions),
 				muscleName: new FormControl({ name: exersise.muscleName }),
 				urlImage:new FormControl(exersise.urlImage),
 

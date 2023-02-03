@@ -3,17 +3,9 @@
 		<app-message [message]="msg"></app-message>
 	</div>
 	<h5 class="title">Exercises</h5>
-	<p-table
-		#dt1
-		[value]="exercises"
-		dataKey="id"
-		[rows]="10"
-		[showCurrentPageReport]="true"
-		[rowsPerPageOptions]="[10, 25, 50]"
-		[loading]="loading"
-		styleClass="p-datatable-customers p-datatable-gridlines"
-		[paginator]="true"
-		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+	<p-table #dt1 [value]="exercises" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+		[rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" styleClass="p-datatable-customers p-datatable-gridlines"
+		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 		[globalFilterFields]="['Name']">
 		<ng-template pTemplate="caption">
 			<div class="p-d-flex">
@@ -35,13 +27,7 @@
 					<div class="p-d-flex p-jc-between p-ai-center">Description</div>
 				</th>
 				<th>
-					<div class="p-d-flex p-jc-between p-ai-center">UrlVideo</div>
-				</th>
-				<th>
 					<div class="p-d-flex p-jc-between p-ai-center">Muscle Name</div>
-				</th>
-				<th>
-					<div class="p-d-flex p-jc-between p-ai-center">Restrictions</div>
 				</th>
 				<th>
 					<div class="p-d-flex p-jc-between p-ai-center">Settings</div>
@@ -57,19 +43,11 @@
 					<span class="image-text">{{ excersise.description }}</span>
 				</td>
 				<td>
-					<a [href]="excersise.urlVideo">
-						<span class="image-text">{{ excersise.urlVideo }}</span>
-					</a>
-				</td>
-				<td>
 					<span class="image-text">{{ excersise.muscleName }}</span>
 				</td>
-				<td>
-					<span class="image-text">{{ excersise.restrictions }}</span>
-				</td>
 				<td class="settings_icon">
-					<i class="pi pi-pencil" style="font-size: 1rem" (click)="navigate(excersise.id)"></i>
-					<i class="pi pi-trash" style="font-size: 1rem" (click)="delete(excersise.id)"></i>
+					<i class="pi pi-pencil" style="font-size: 1rem;" (click)="navigate(excersise.id)"></i>
+					<i class="pi pi-trash" style="font-size: 1rem;" (click)="delete(excersise.id)"></i>
 				</td>
 			</tr>
 		</ng-template>
