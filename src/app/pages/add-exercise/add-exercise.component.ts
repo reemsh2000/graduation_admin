@@ -29,8 +29,9 @@ export class AddExerciseComponent implements OnInit {
     name: new FormControl('', Validators.required),
     urlVideo: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    restrictions: new FormControl([]),
     muscleName: new FormControl('', Validators.required),
+    urlImage:new FormControl('', Validators.required),
+    restrictions: new FormControl([]),
   })
   private msg = new BehaviorSubject<any>({})
   public msg$ = this.msg.asObservable()

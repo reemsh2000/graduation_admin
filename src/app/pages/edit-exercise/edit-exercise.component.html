@@ -13,17 +13,21 @@
           <input type="text" class="info-input" formControlName="name" />
         </div>
         <div class="label-profile">
-          <label class="label">Url video</label>
-          <input type="text" class="info-input" formControlName="urlVideo"/>
+          <label class="label">Muscle Name</label>
+          <p-dropdown class="info-drop" [options]="bodyPart" formControlName="muscleName"
+          optionLabel="name"></p-dropdown>
+        </div>
+        <div class="label-profile">
+          <label class="label">video Url</label>
+          <input type="text" class="info-input" formControlName="urlVideo" />
+        </div>
+        <div class="label-profile">
+          <label class="label">Image Url</label>
+          <input type="text" class="info-input" formControlName="urlImage" />
         </div>
         <div class="label-profile">
           <label class="label">Description</label>
           <textarea type="text" class="info-input" formControlName="description"></textarea>
-        </div>
-        <div class="label-profile">
-          <label class="label">Muscle Name</label>
-          <p-dropdown class="info-drop" [options]="bodyPart" formControlName="muscleName" optionLabel="name">
-          </p-dropdown>
         </div>
         <div class="label-profile">
           <label for="admin-profile-name" class="label">Restrictions</label>
