@@ -14,20 +14,20 @@
         </div>
         <div class="label-profile">
           <label class="label">Url video</label>
-          <input type="text" class="info-input" formControlName="urlVideo" />
+          <input type="text" class="info-input" formControlName="urlVideo"/>
         </div>
         <div class="label-profile">
           <label class="label">Description</label>
-          <input type="text" class="info-input" formControlName="description" />
+          <textarea type="text" class="info-input" formControlName="description"></textarea>
         </div>
         <div class="label-profile">
           <label class="label">Muscle Name</label>
-          <p-dropdown class="info-drop" [options]="bodyPart" formControlName="muscleName"
-            optionLabel="name"></p-dropdown>
+          <p-dropdown class="info-drop" [options]="bodyPart" formControlName="muscleName" optionLabel="name">
+          </p-dropdown>
         </div>
         <div class="label-profile">
           <label for="admin-profile-name" class="label">Restrictions</label>
-          <p-chips formControlName="restrictions"class="info-chip"></p-chips>
+          <p-chips formControlName="restrictions" class="info-chip"></p-chips>
         </div>
       </div>
     </from>
