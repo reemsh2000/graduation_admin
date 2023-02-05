@@ -7,21 +7,25 @@
     <app-message [message]="msg$ | async"></app-message>
   </div>
   <div class="basic-info">
-    <h3 class="basic-word">Add Doctor</h3>
+    <h3 class="basic-word">Edit Doctor</h3>
   </div>
   <div class="profile-inputs">
     <from [formGroup]="doctorForm">
       <div class="admin-container">
         <div class="label-profile">
           <label class="label">Doctor's Email</label>
-          <input type="text" class="info-input" formControlName="email" />
+          <input
+            type="text"
+            class="info-input"
+            formControlName="email"
+          />
         </div>
         <div class="label-profile">
           <label for class="label">Doctor's Name</label>
           <input type="text" class="info-input" formControlName="name" />
         </div>
         <div class="btns">
-          <button class="profile-btn" (click)="save()">Save</button>
+          <button class="profile-btn" (click)="edit()">Save</button>
         </div>
       </div>
     </from>

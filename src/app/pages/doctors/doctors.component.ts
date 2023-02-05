@@ -56,7 +56,8 @@ export class DoctorsComponent implements OnInit {
     this.showErrorMsg = true
   }
   navigate(id: string) {
-    this.router.navigate([`dashboard/edit-doctor${id.trim()}`])
+    console.log({id})
+    this.router.navigate([`dashboard/edit-doctor/${id.trim()}`])
   }
 
 }

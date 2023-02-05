@@ -58,6 +58,9 @@ export class DataService {
 	getExercise(exersiseId: string) {
 		return this.firestore.collection("exercises").doc(exersiseId).get();
 	}
+	getDoctor(exersiseId: string) {
+		return this.firestore.collection("doctors").doc(exersiseId).get();
+	}
 
 	updateExercise(id: string, exercises: any) {
 		return this.firestore

@@ -33,6 +33,7 @@ import { AddExerciseComponent } from "./pages/add-exercise/add-exercise.componen
 import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
 import { EditExerciseComponent } from './pages/edit-exercise/edit-exercise.component';
 import { DoctorsComponent } from './pages/doctors/doctors.component';
+import { EditDoctorComponent } from './pages/edit-doctor/edit-doctor.component';
 
 @NgModule({
 	declarations: [
@@ -50,6 +51,7 @@ import { DoctorsComponent } from './pages/doctors/doctors.component';
   AddDoctorComponent,
   EditExerciseComponent,
   DoctorsComponent,
+  EditDoctorComponent,
 	],
 	imports: [
 		MatTableModule,

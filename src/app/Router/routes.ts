@@ -6,6 +6,7 @@ import { ResetpasswordComponent } from '../pages/Auth/resetpassword/resetpasswor
 import { AddExerciseComponent } from 'app/pages/add-exercise/add-exercise.component'
 import { EditExerciseComponent } from 'app/pages/edit-exercise/edit-exercise.component'
 import { DoctorsComponent } from './../pages/doctors/doctors.component';
+import { EditDoctorComponent } from './../pages/edit-doctor/edit-doctor.component';
 
 export const routingTable = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,5 +17,6 @@ export const routingTable = [
   { path: 'dashboard/doctors', component: DoctorsComponent },
   { path: 'dashboard/add-exercise', component: AddExerciseComponent },
   { path: 'dashboard/edit-exercise/:id', component: EditExerciseComponent },
+  { path: 'dashboard/edit-doctor/:id', component: EditDoctorComponent },
   { path: 'dashboard/add-doctor', component: AddDoctorComponent },
 ]
