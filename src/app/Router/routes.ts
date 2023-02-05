@@ -5,6 +5,7 @@ import { DasboradComponent } from '../pages/dasborad/dasborad.component'
 import { ResetpasswordComponent } from '../pages/Auth/resetpassword/resetpassword.component'
 import { AddExerciseComponent } from 'app/pages/add-exercise/add-exercise.component'
 import { EditExerciseComponent } from 'app/pages/edit-exercise/edit-exercise.component'
+import { DoctorsComponent } from './../pages/doctors/doctors.component';
 
 export const routingTable = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,6 +13,7 @@ export const routingTable = [
   { path: 'register', component: SignupComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
   { path: 'dashboard', component: DasboradComponent },
+  { path: 'dashboard/doctors', component: DoctorsComponent },
   { path: 'dashboard/add-exercise', component: AddExerciseComponent },
   { path: 'dashboard/edit-exercise/:id', component: EditExerciseComponent },
   { path: 'dashboard/add-doctor', component: AddDoctorComponent },

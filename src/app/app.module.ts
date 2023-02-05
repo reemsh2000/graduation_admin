@@ -32,6 +32,7 @@ import { AuthCommonPicComponent } from "./components/common/auth-common-pic/auth
 import { AddExerciseComponent } from "./pages/add-exercise/add-exercise.component";
 import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
 import { EditExerciseComponent } from './pages/edit-exercise/edit-exercise.component';
+import { DoctorsComponent } from './pages/doctors/doctors.component';
 
 @NgModule({
 	declarations: [
@@ -48,6 +49,7 @@ import { EditExerciseComponent } from './pages/edit-exercise/edit-exercise.compo
 		AddExerciseComponent,
   AddDoctorComponent,
   EditExerciseComponent,
+  DoctorsComponent,
 	],
 	imports: [
 		MatTableModule,
