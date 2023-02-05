@@ -28,7 +28,7 @@ export class DasboradComponent implements OnInit {
     this.asideService.openAside$.subscribe((val) => {
       this.openMenu = val
     })
-    this.asideService.setSection('Dashboard')
+    this.asideService.setSection('Exercises')
   }
   async ngOnInit() {
     await this.getexercises()
@@ -52,7 +52,7 @@ export class DasboradComponent implements OnInit {
   }
 
   async delete(exersiseId: string) {
-    await this.dataService.deleteExercises(exersiseId)
+    await this.dataService.deleteExercise(exersiseId)
     await this.getexercises()
     this.showErrorMsg = true
   }

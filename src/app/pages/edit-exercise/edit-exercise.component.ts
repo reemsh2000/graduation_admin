@@ -47,7 +47,7 @@ export class EditExerciseComponent implements OnInit {
 				...this.exerciseForm.value,
 				muscleName: this.exerciseForm.value.muscleName.name,
 			};
-			this.dataService.updateExercises(this.id, formData);
+			this.dataService.updateExercise(this.id, formData);
 			this.msg.next({
 				detail: "Exersise updated successfully",
 				summary: "Success",

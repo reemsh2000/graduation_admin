@@ -18,8 +18,13 @@ export class SidebarComponent {
 	sideBarArray = [
 		{
 			icon: PrimeIcons.HOME,
-			label: "Dashboard",
+			label: "Exercises",
 			route: "dashboard",
+		},
+		{
+			icon: PrimeIcons.USERS,
+			label: "Doctors",
+			route: "dashboard/doctors",
 		},
 		{
 			icon: PrimeIcons.PLUS,
