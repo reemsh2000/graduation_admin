@@ -14,8 +14,8 @@
         </div>
         <div class="label-profile">
           <label class="label">Muscle Name</label>
-          <p-dropdown class="info-drop" [options]="bodyPart" formControlName="muscleName"
-          optionLabel="name"></p-dropdown>
+          <p-dropdown class="info-drop" [options]="bodyPart" formControlName="muscleName" optionLabel="name">
+          </p-dropdown>
         </div>
         <div class="label-profile">
           <label class="label">video Url</label>
@@ -26,13 +26,13 @@
           <input type="text" class="info-input" formControlName="urlImage" />
         </div>
         <div class="label-profile">
+          <label class="label">Burnt Calroies for 30 minutes</label>
+          <input type="text" class="info-input" formControlName="burntCalories" />
+        </div>
+        <div class="label-profile">
           <label class="label">Description</label>
           <textarea type="text" class="info-input" formControlName="description"></textarea>
         </div>
-        <!-- <div class="label-profile">
-          <label for="admin-profile-name" class="label">Restrictions</label>
-          <p-chips formControlName="restrictions"class="info-chip"></p-chips>
-        </div> -->
       </div>
     </from>
     <div class="btns">

@@ -32,11 +32,10 @@ export class AddExerciseComponent implements OnInit {
     description: new FormControl('', Validators.required),
     muscleName: new FormControl('', Validators.required),
     urlImage:new FormControl('', Validators.required),
-    restrictions: new FormControl([]),
+    burntCalories: new FormControl('',Validators.required),
   })
   private msg = new BehaviorSubject<any>({})
   public msg$ = this.msg.asObservable()
-  restrictions: any
 
   constructor(
     private dataService: DataService,

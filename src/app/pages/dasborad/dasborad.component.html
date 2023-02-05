@@ -30,6 +30,9 @@
 					<div class="p-d-flex p-jc-between p-ai-center">Muscle Name</div>
 				</th>
 				<th>
+					<div class="p-d-flex p-jc-between p-ai-center">Burnt Calories</div>
+				</th>
+				<th>
 					<div class="p-d-flex p-jc-between p-ai-center">Settings</div>
 				</th>
 			</tr>
@@ -44,6 +47,9 @@
 				</td>
 				<td>
 					<span class="image-text">{{ excersise.muscleName }}</span>
+				</td>
+				<td>
+					<span class="image-text">{{ excersise.burntCalories }}</span>
 				</td>
 				<td class="settings_icon">
 					<i class="pi pi-pencil" style="font-size: 1rem;" (click)="navigate(excersise.id)"></i>
