@@ -1,3 +1,4 @@
+import { AuthService } from 'app/services/auth.service';
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { PrimeIcons } from "primeng/api";
 import { AsideService } from "../../../services/aside.service";
@@ -13,7 +14,7 @@ export class SidebarComponent {
 	@Output() isMenuopen = new EventEmitter();
 	allCompnayIcon = PrimeIcons.USERS;
 	logoutIcon = PrimeIcons.ARROW_CIRCLE_LEFT;
-	constructor(public section: AsideService) {}
+	constructor(public section: AsideService,public authService: AuthService) {}
 
 	sideBarArray = [
 		{

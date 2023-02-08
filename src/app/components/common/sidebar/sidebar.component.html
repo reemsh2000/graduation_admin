@@ -20,7 +20,7 @@
   </a>
 
 
-  <a routerLink="/login" routerLinkActive="true" class="line_menu">
+  <a  class="line_menu" (click)="authService.logout()">
     <div class="icon_line">
       <i [ngClass]="[logoutIcon, 'row_icon']"></i>
     </div>
