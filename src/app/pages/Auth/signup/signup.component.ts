@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
 				this.showErrorDifferenetPass = true;
 			}
 		} else {
-			this.massage = "you should enter value";
+			this.massage = "you should enter all required values";
 		}
 	}
 }
